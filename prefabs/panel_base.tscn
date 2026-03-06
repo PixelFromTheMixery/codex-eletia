@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dj32f2yw6gwki"]
+
+[node name="Panel_Window" type="Panel" unique_id=356670085]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 60.0
+offset_right = -30.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label_Title" type="Label" parent="." unique_id=1092411833]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBox_Window" type="VBoxContainer" parent="." unique_id=1113384820]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scroll" type="ScrollContainer" parent="VBox_Window" unique_id=379391004]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="VBox_Window/Scroll" unique_id=1495506934]
+layout_mode = 2
+size_flags_horizontal = 3

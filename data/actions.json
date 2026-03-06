@@ -1,0 +1,24 @@
+{
+	"gather": {
+		"action_name": "Search the area for items",
+		"action" : "Gather",
+		"time": -1,
+		"reqs":[
+			{	
+				"type":	"item",
+				"name": "TestItem", 
+				"qty": 1
+			}
+		],
+		"rews":[
+			{
+				"type":	"item",
+				"name": "TestItem", 
+				"qty": 1
+			},
+		],
+		"tags":[
+			"test_action"
+		]
+	}
+}

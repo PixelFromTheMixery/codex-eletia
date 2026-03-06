@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://b8nymlsqebvh4"]
+
+[ext_resource type="Script" uid="uid://xngvhbnhi4vk" path="res://prefabs/vbox_item.gd" id="1_oth7i"]
+
+[node name="VBox_Item" type="VBoxContainer" unique_id=1841462403]
+script = ExtResource("1_oth7i")
+
+[node name="HBox_Basic" type="HBoxContainer" parent="." unique_id=1952939594]
+layout_mode = 2
+
+[node name="Label_Qty" type="Label" parent="HBox_Basic" unique_id=475268833]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "1000"
+vertical_alignment = 1
+
+[node name="Label_Name" type="Label" parent="HBox_Basic" unique_id=1548319112]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Name"
+vertical_alignment = 1
+
+[node name="HBox_Detail" type="HBoxContainer" parent="." unique_id=88423557]
+layout_mode = 2
+
+[node name="Label_Wgt" type="Label" parent="HBox_Detail" unique_id=1798820111]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "1.0"
+vertical_alignment = 1
+
+[node name="HFlow_Tags" type="HFlowContainer" parent="HBox_Detail" unique_id=1544502146]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpinBox_Drop" type="SpinBox" parent="HBox_Detail" unique_id=1790555531]
+layout_mode = 2
+
+[node name="Button_Drop" type="Button" parent="HBox_Detail" unique_id=652925964]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+disabled = true
+text = "Drop"
+
+[node name="HSep" type="HSeparator" parent="." unique_id=552201641]
+layout_mode = 2
+
+[connection signal="value_changed" from="HBox_Detail/SpinBox_Drop" to="." method="_on_spin_box_drop_value_changed"]
+[connection signal="pressed" from="HBox_Detail/Button_Drop" to="." method="_on_button_drop_pressed"]

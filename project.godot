@@ -1,0 +1,46 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="codex-eletia"
+run/main_scene="uid://dale37a6yx0u1"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+SignalBus="*uid://d20o8gs7iq0yj"
+Settings="*uid://skqbwkxaygtq"
+Save="*uid://e04q0u8agwcq"
+Data="*uid://bgrowdmqhgtg0"
+Player="*uid://bili3mvvdqrpl"
+World="*uid://d3fx84tfv5hpr"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1200
+window/size/initial_position_type=0
+window/size/initial_position=Vector2i(1120, 0)
+window/size/borderless=true
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

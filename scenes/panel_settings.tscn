@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dgy1wsfr6ch8i"]
+
+[ext_resource type="PackedScene" uid="uid://dj32f2yw6gwki" path="res://prefabs/panel_base.tscn" id="1_0nm18"]
+
+[node name="Panel_Settings" unique_id=356670085 instance=ExtResource("1_0nm18")]
+
+[node name="Label_Title" parent="." index="0" unique_id=1092411833]
+text = "Settings"
+
+[node name="Fold_Debug" type="FoldableContainer" parent="VBox_Window/Scroll/VBox" parent_id_path=PackedInt32Array(1495506934) index="0" unique_id=1548217259]
+layout_mode = 2
+title = "Debug"

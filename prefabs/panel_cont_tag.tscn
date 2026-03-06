@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://4cfi3qngl2i5"]
+
+[ext_resource type="Script" uid="uid://hyj35chvesll" path="res://prefabs/panel_cont_tag.gd" id="1_lqmwq"]
+
+[node name="PanelCont_Tag" type="PanelContainer" unique_id=807293127]
+custom_minimum_size = Vector2(0, 23)
+script = ExtResource("1_lqmwq")
+
+[node name="Label_Tag" type="Label" parent="." unique_id=195903795]
+layout_mode = 2
+text = " #Tag "

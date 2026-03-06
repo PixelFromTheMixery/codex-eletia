@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cth6angnb4wq7"]
+
+[ext_resource type="Script" uid="uid://b2vcmc1bou2wy" path="res://prefabs/vbox_log.gd" id="1_lmnwy"]
+
+[node name="VBox_Log" type="VBoxContainer" unique_id=821124131]
+script = ExtResource("1_lmnwy")
+
+[node name="HBox_Details" type="HBoxContainer" parent="." unique_id=1601680403]
+layout_mode = 2
+
+[node name="Label_Type" type="Label" parent="HBox_Details" unique_id=1185270917]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_vertical = 1
+clip_text = true
+
+[node name="VSeparator" type="VSeparator" parent="HBox_Details" unique_id=1163935597]
+layout_mode = 2
+
+[node name="Label_Detail" type="Label" parent="HBox_Details" unique_id=1547181703]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+autowrap_mode = 3
+
+[node name="HSep" type="HSeparator" parent="." unique_id=150296975]
+layout_mode = 2

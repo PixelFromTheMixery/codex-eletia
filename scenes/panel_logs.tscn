@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://ckx3xbvo5pkfn"]
+
+[ext_resource type="PackedScene" uid="uid://dj32f2yw6gwki" path="res://prefabs/panel_base.tscn" id="1_xjgx0"]
+[ext_resource type="Script" uid="uid://b6lac5ijdhtpy" path="res://scripts/UI/log_manager.gd" id="2_xw8m2"]
+[ext_resource type="PackedScene" uid="uid://cth6angnb4wq7" path="res://prefabs/vbox_log.tscn" id="3_magr3"]
+
+[node name="Panel_Logs" unique_id=356670085 instance=ExtResource("1_xjgx0")]
+offset_top = 90.0
+offset_bottom = -210.0
+script = ExtResource("2_xw8m2")
+
+[node name="Label_Title" parent="." index="0" unique_id=1092411833]
+text = "Logs"
+
+[node name="HBox_Settings" type="HBoxContainer" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="0" unique_id=2110745656]
+layout_mode = 2
+
+[node name="Fold_Filters" type="FoldableContainer" parent="VBox_Window/HBox_Settings" index="0" unique_id=1844040870]
+layout_mode = 2
+size_flags_horizontal = 3
+folded = true
+title = "Filters"
+title_alignment = 1
+
+[node name="VBox_Filters" type="VBoxContainer" parent="VBox_Window/HBox_Settings/Fold_Filters" index="0" unique_id=440166973]
+visible = false
+layout_mode = 2
+
+[node name="Button_Clear" type="Button" parent="VBox_Window/HBox_Settings" index="1" unique_id=1575095911]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Clear"
+
+[node name="VBox_Log" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="1" unique_id=821124131 instance=ExtResource("3_magr3")]
+layout_mode = 2
+script = null
+
+[node name="Label_Type" parent="VBox_Window/VBox_Log/HBox_Details" parent_id_path=PackedInt32Array(821124131, 1601680403) index="0" unique_id=1185270917]
+text = "Type"
+
+[node name="Label_Detail" parent="VBox_Window/VBox_Log/HBox_Details" parent_id_path=PackedInt32Array(821124131, 1601680403) index="2" unique_id=1547181703]
+text = "Detail"
+
+[node name="HSep_Double" type="HSeparator" parent="VBox_Window/VBox_Log" index="2" unique_id=257962893]
+layout_mode = 2
+
+[connection signal="pressed" from="VBox_Window/HBox_Settings/Button_Clear" to="." method="_on_button_clear_pressed"]
+
+[editable path="VBox_Window/VBox_Log"]

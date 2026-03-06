@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bqom7pkmtqa33"]
+
+[ext_resource type="PackedScene" uid="uid://dj32f2yw6gwki" path="res://prefabs/panel_base.tscn" id="1_dew1b"]
+[ext_resource type="Script" uid="uid://csw5c72aj5kmh" path="res://scripts/UI/action_manager.gd" id="2_vug5a"]
+
+[node name="Panel_Actions" unique_id=356670085 instance=ExtResource("1_dew1b")]
+script = ExtResource("2_vug5a")

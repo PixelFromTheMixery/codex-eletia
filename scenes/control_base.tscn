@@ -1,0 +1,276 @@
+[gd_scene format=3 uid="uid://dale37a6yx0u1"]
+
+[ext_resource type="Theme" uid="uid://cl3r7ns3s7gi7" path="res://resources/dev_theme.tres" id="1_itnev"]
+[ext_resource type="Script" uid="uid://bvwyejb1d2lpc" path="res://scripts/UI/view_manager.gd" id="1_sby6r"]
+[ext_resource type="ButtonGroup" uid="uid://btqd88t48n4c6" path="res://resources/button_group_main.tres" id="2_aj7gc"]
+[ext_resource type="Script" uid="uid://b0mqeed5f0b7v" path="res://scripts/UI/button_test.gd" id="4_vgkuo"]
+[ext_resource type="PackedScene" uid="uid://dgcm41jeaicml" path="res://scenes/panel_inventory.tscn" id="5_itnev"]
+[ext_resource type="PackedScene" uid="uid://b34t11xnq1k45" path="res://scenes/panel_quests.tscn" id="6_itnev"]
+[ext_resource type="PackedScene" uid="uid://ckx3xbvo5pkfn" path="res://scenes/panel_logs.tscn" id="8_itnev"]
+[ext_resource type="PackedScene" uid="uid://dgy1wsfr6ch8i" path="res://scenes/panel_settings.tscn" id="9_goknb"]
+[ext_resource type="Script" uid="uid://br00654wrv3co" path="res://scripts/UI/alert_manager.gd" id="9_p75v5"]
+[ext_resource type="PackedScene" uid="uid://bqom7pkmtqa33" path="res://scenes/panel_actions.tscn" id="10_3fa2t"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_p75v5"]
+
+[node name="Control_Base" type="Control" unique_id=99558466]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_itnev")
+script = ExtResource("1_sby6r")
+metadata/_edit_lock_ = true
+
+[node name="HBox_TopBar" type="HBoxContainer" parent="." unique_id=693745242]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 44.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Button_Save" type="Button" parent="HBox_TopBar" unique_id=1218231346]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="Button_Inventory" type="Button" parent="HBox_TopBar" unique_id=849917415]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Inventory"
+
+[node name="Button_Craft" type="Button" parent="HBox_TopBar" unique_id=68364897]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Craft"
+
+[node name="Button_Map" type="Button" parent="HBox_TopBar" unique_id=1307721894]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Map"
+
+[node name="Button_Quests" type="Button" parent="HBox_TopBar" unique_id=199379307]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Quests"
+
+[node name="Button_Archive" type="Button" parent="HBox_TopBar" unique_id=345984915]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Archive"
+
+[node name="Button_Log" type="Button" parent="HBox_TopBar" unique_id=139375893]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Log"
+
+[node name="Button_Settings" type="Button" parent="HBox_TopBar" unique_id=697844210]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Settings"
+autowrap_mode = 3
+
+[node name="HBox_World" type="HBoxContainer" parent="." unique_id=1409059560]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 48.0
+offset_right = -4.0
+offset_bottom = 92.0
+grow_horizontal = 2
+
+[node name="Panel_Time" type="Panel" parent="HBox_World" unique_id=407072062]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label_Time" type="Label" parent="HBox_World/Panel_Time" unique_id=1565743795]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -11.5
+offset_right = 267.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Time "
+horizontal_alignment = 1
+
+[node name="Panel_Location" type="Panel" parent="HBox_World" unique_id=637860939]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label_Location" type="Label" parent="HBox_World/Panel_Location" unique_id=615591850]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -11.5
+offset_right = 267.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Location"
+horizontal_alignment = 1
+
+[node name="HBox_BotBar" type="HBoxContainer" parent="." unique_id=382427067]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -44.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button_Travel" type="Button" parent="HBox_BotBar" unique_id=870548720]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = ExtResource("2_aj7gc")
+text = "Travel"
+
+[node name="Button_Dragons" type="Button" parent="HBox_BotBar" unique_id=1213819160]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = ExtResource("2_aj7gc")
+text = "Dragons"
+
+[node name="Button_Activities" type="Button" parent="HBox_BotBar" unique_id=1489469021]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_aj7gc")
+text = "Activities"
+
+[node name="Button_Player" type="Button" parent="HBox_BotBar" unique_id=310686285]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_p75v5")
+text = "Player"
+
+[node name="Panel_Activities" parent="." unique_id=1705684540 instance=ExtResource("10_3fa2t")]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 4.0
+offset_top = 96.0
+offset_right = -4.0
+offset_bottom = -48.0
+
+[node name="Panel_Inventory" parent="." unique_id=356670085 instance=ExtResource("5_itnev")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_top = 96.0
+offset_bottom = -48.0
+
+[node name="Panel_Quests" parent="." unique_id=264430082 instance=ExtResource("6_itnev")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_top = 96.0
+offset_bottom = -48.0
+
+[node name="Panel_Logs" parent="." unique_id=1051697105 instance=ExtResource("8_itnev")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_top = 96.0
+offset_bottom = -48.0
+
+[node name="Panel_Settings" parent="." unique_id=1001164940 instance=ExtResource("9_goknb")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_top = 96.0
+offset_bottom = -48.0
+
+[node name="VBox_Alerts" type="VBoxContainer" parent="." unique_id=942200244]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -300.0
+offset_right = -15.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 2
+script = ExtResource("9_p75v5")
+metadata/_edit_lock_ = true
+
+[node name="Button_Test" type="Button" parent="." unique_id=2124920072]
+z_index = 100
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -15.5
+offset_right = 78.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mighty Test Button"
+script = ExtResource("4_vgkuo")
+
+[node name="Button_Test2" type="Button" parent="." unique_id=1661487730]
+z_index = 100
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = 22.0
+offset_right = 78.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mighty Test Button2"
+
+[connection signal="pressed" from="HBox_TopBar/Button_Save" to="." method="_on_button_save_pressed"]
+[connection signal="toggled" from="HBox_TopBar/Button_Inventory" to="." method="_on_button_inventory_toggled"]
+[connection signal="toggled" from="HBox_TopBar/Button_Quests" to="." method="_on_button_quests_toggled"]
+[connection signal="toggled" from="HBox_TopBar/Button_Log" to="." method="_on_button_log_toggled"]
+[connection signal="toggled" from="HBox_TopBar/Button_Settings" to="." method="_on_button_settings_toggled"]
+[connection signal="pressed" from="Button_Test" to="Button_Test" method="_on_pressed"]
+[connection signal="pressed" from="Button_Test2" to="Button_Test" method="_on_button_test_2_pressed"]

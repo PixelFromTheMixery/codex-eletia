@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bg0xe07ohy8s7"]
+
+[ext_resource type="Script" uid="uid://cp1pufmeh0swh" path="res://prefabs/vbox_action.gd" id="1_vndno"]
+
+[node name="VBox_Action" type="VBoxContainer" unique_id=2009764124]
+script = ExtResource("1_vndno")
+
+[node name="Label_Title" type="Label" parent="." unique_id=149239796]
+layout_mode = 2
+text = "Action Title"
+horizontal_alignment = 1
+
+[node name="HBox_Tags" type="HBoxContainer" parent="." unique_id=1741678214]
+layout_mode = 2
+
+[node name="HBox_Info" type="HBoxContainer" parent="." unique_id=1588356050]
+layout_mode = 2
+
+[node name="VBox_Req" type="VBoxContainer" parent="HBox_Info" unique_id=1329565023]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSep" type="VSeparator" parent="HBox_Info" unique_id=325199507]
+layout_mode = 2
+
+[node name="VBox_Rew" type="VBoxContainer" parent="HBox_Info" unique_id=1288041398]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBox_Action" type="HBoxContainer" parent="." unique_id=2047591547]
+layout_mode = 2
+
+[node name="Progress_Action" type="ProgressBar" parent="HBox_Action" unique_id=1475512441]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+show_percentage = false
+
+[node name="Label_Progress" type="Label" parent="HBox_Action/Progress_Action" unique_id=255818367]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "00:00"
+
+[node name="Button_Action" type="Button" parent="HBox_Action" unique_id=843731052]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Action"
+
+[node name="HSep" type="HSeparator" parent="." unique_id=1377511884]
+layout_mode = 2
+
+[connection signal="pressed" from="HBox_Action/Button_Action" to="." method="_on_button_action_pressed"]

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dgcm41jeaicml"]
+
+[ext_resource type="PackedScene" uid="uid://dj32f2yw6gwki" path="res://prefabs/panel_base.tscn" id="1_54338"]
+[ext_resource type="Script" uid="uid://0k8q33easkku" path="res://scripts/UI/inventory_manager.gd" id="2_qoqjg"]
+[ext_resource type="PackedScene" uid="uid://b7mfhlckgsqbh" path="res://prefabs/hbox_filter.tscn" id="3_wcmo1"]
+
+[node name="Panel_Inventory" unique_id=356670085 instance=ExtResource("1_54338")]
+script = ExtResource("2_qoqjg")
+
+[node name="Label_Title" parent="." index="0" unique_id=1092411833]
+text = "Inventory"
+
+[node name="HBox_Filter" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="0" unique_id=574118606 instance=ExtResource("3_wcmo1")]
+layout_mode = 2
+
+[node name="Text_Search" parent="VBox_Window/HBox_Filter" index="0" unique_id=780965531]
+visible = false
+
+[node name="Option_Filters" parent="VBox_Window/HBox_Filter" index="1" unique_id=185702710]
+visible = false
+
+[node name="Panel_Weight" type="PanelContainer" parent="VBox_Window/HBox_Filter" index="2" unique_id=1467719404]
+layout_mode = 2
+
+[node name="Label_Weight" type="Label" parent="VBox_Window/HBox_Filter/Panel_Weight" index="0" unique_id=2121274164]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "0/0"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="1" unique_id=1157596410]
+layout_mode = 2
+
+[node name="HSep_Bottom" type="HSeparator" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="2" unique_id=1042533591]
+layout_mode = 2
+
+[editable path="VBox_Window/HBox_Filter"]

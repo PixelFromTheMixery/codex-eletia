@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b7mfhlckgsqbh"]
+
+[ext_resource type="Script" uid="uid://c8go0tgr6ymfc" path="res://prefabs/hbox_filter.gd" id="1_wl4a1"]
+
+[node name="HBox_Filter" type="HBoxContainer" unique_id=574118606]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+script = ExtResource("1_wl4a1")
+
+[node name="Text_Search" type="TextEdit" parent="." unique_id=780965531]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search"
+emoji_menu_enabled = false
+
+[node name="Button_Clear" type="Button" parent="Text_Search" unique_id=1925656754]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "X"
+
+[node name="Option_Filters" type="OptionButton" parent="." unique_id=185702710]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 1
+popup/item_0/text = "Filters"
+popup/item_0/id = 0
+popup/item_0/separator = true
+
+[connection signal="pressed" from="Text_Search/Button_Clear" to="Text_Search" method="_on_button_clear_pressed"]

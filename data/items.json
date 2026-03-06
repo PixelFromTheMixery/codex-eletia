@@ -1,0 +1,12 @@
+{
+	"TestItem": {
+		"item_name": "A test item",
+		"unit_weight": 0.1,
+		"tags": ["test", "test1", "test2"],
+	},
+	"AnotherTestItem": {
+		"item_name": "Another test item",
+		"unit_weight": 10,
+		"tags": ["test", "test1", "test2"],
+	}
+}
