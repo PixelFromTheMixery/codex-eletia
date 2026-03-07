@@ -1,0 +1,45 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "urn:shared",
+    "title": "Shared Schemas",
+    "description": "Reusable subschemas",
+    "type": "object",
+    "$defs": {
+        "tags": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "pattern": "^[a-z]+$"
+            }
+        },
+        "exchange": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "item",
+                            "dragon",
+                            "location",
+                            "enemy"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "pattern": "^[A-Z][a-z0-9]+(?:[A-Z][a-z0-9]+)*$"
+                    },
+                    "qty": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "type",
+                    "name",
+                    "qty"
+                ]
+            }
+        }
+    }
+}

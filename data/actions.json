@@ -1,23 +1,23 @@
 {
-	"gather": {
+	"Gather": {
 		"action_name": "Search the area for items",
-		"action" : "Gather",
+		"action": "Gather",
 		"time": -1,
-		"reqs":[
-			{	
-				"type":	"item",
-				"name": "TestItem", 
+		"reqs": [
+			{
+				"type": "item",
+				"name": "TestItem",
 				"qty": 1
 			}
 		],
-		"rews":[
+		"rews": [
 			{
-				"type":	"item",
-				"name": "TestItem", 
+				"type": "item",
+				"name": "TestItem",
 				"qty": 1
-			},
+			}
 		],
-		"tags":[
+		"tags": [
 			"test_action"
 		]
 	}

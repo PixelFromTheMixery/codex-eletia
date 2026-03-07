@@ -1,0 +1,30 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "urn:upgrades",
+	"title": "Upgrade Entries",
+	"description": "Checked acceptable",
+	"type": "object",
+	"propertyNames": {
+		"pattern": "^[a-z]+$"
+	},
+	"additionalProperties": {
+		"type": "object",
+		"propertyNames": {
+			"pattern": "^[a-z]+(?:_[a-z]+)*$"
+		},
+		"additionalProperties": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"description"
+			]
+		}
+	}
+}
