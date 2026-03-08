@@ -3,7 +3,7 @@ extends Resource
 class_name ItemData
 
 @export var item_id: String
-@export var item_name: String
+@export var item_loc_name: String
 @export var unit_weight: float
 @export var tags: Array[String]
 

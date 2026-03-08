@@ -2,6 +2,7 @@ extends Resource
 
 class_name PlayerData
 
-@export var inventory: Dictionary
-@export var stats: Dictionary
-@export var upgrades: Dictionary
+var inventory: Dictionary
+var stats: Dictionary
+var reputation: Dictionary
+var upgrades: Dictionary

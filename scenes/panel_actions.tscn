@@ -5,3 +5,6 @@
 
 [node name="Panel_Actions" unique_id=356670085 instance=ExtResource("1_dew1b")]
 script = ExtResource("2_vug5a")
+
+[node name="Label_Title" parent="." index="0" unique_id=1092411833]
+text = "Actions"

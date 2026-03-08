@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://dale37a6yx0u1"]
 
-[ext_resource type="Theme" uid="uid://cl3r7ns3s7gi7" path="res://resources/dev_theme.tres" id="1_itnev"]
+[ext_resource type="Theme" uid="uid://cl3r7ns3s7gi7" path="res://assets/dev_theme.tres" id="1_itnev"]
 [ext_resource type="Script" uid="uid://bvwyejb1d2lpc" path="res://scripts/UI/view_manager.gd" id="1_sby6r"]
-[ext_resource type="ButtonGroup" uid="uid://btqd88t48n4c6" path="res://resources/button_group_main.tres" id="2_aj7gc"]
+[ext_resource type="ButtonGroup" uid="uid://btqd88t48n4c6" path="res://assets/button_group_main.tres" id="2_aj7gc"]
 [ext_resource type="Script" uid="uid://b0mqeed5f0b7v" path="res://scripts/UI/button_test.gd" id="4_vgkuo"]
 [ext_resource type="PackedScene" uid="uid://dgcm41jeaicml" path="res://scenes/panel_inventory.tscn" id="5_itnev"]
+[ext_resource type="PackedScene" uid="uid://dl3v0yh8apmiq" path="res://scenes/panel_map.tscn" id="5_p75v5"]
 [ext_resource type="PackedScene" uid="uid://b34t11xnq1k45" path="res://scenes/panel_quests.tscn" id="6_itnev"]
 [ext_resource type="PackedScene" uid="uid://ckx3xbvo5pkfn" path="res://scenes/panel_logs.tscn" id="8_itnev"]
 [ext_resource type="PackedScene" uid="uid://dgy1wsfr6ch8i" path="res://scenes/panel_settings.tscn" id="9_goknb"]
@@ -187,33 +188,39 @@ offset_top = 96.0
 offset_right = -4.0
 offset_bottom = -48.0
 
-[node name="Panel_Inventory" parent="." unique_id=356670085 instance=ExtResource("5_itnev")]
+[node name="Panel_Map" parent="." unique_id=356670085 instance=ExtResource("5_p75v5")]
+layout_mode = 1
+anchors_preset = -1
+offset_top = 116.0
+offset_bottom = -72.0
+
+[node name="Panel_Inventory" parent="." unique_id=1947286376 instance=ExtResource("5_itnev")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-offset_top = 96.0
-offset_bottom = -48.0
+offset_top = 116.0
+offset_bottom = -72.0
 
 [node name="Panel_Quests" parent="." unique_id=264430082 instance=ExtResource("6_itnev")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-offset_top = 96.0
-offset_bottom = -48.0
+offset_top = 116.0
+offset_bottom = -72.0
 
 [node name="Panel_Logs" parent="." unique_id=1051697105 instance=ExtResource("8_itnev")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-offset_top = 96.0
-offset_bottom = -48.0
+offset_top = 116.0
+offset_bottom = -72.0
 
 [node name="Panel_Settings" parent="." unique_id=1001164940 instance=ExtResource("9_goknb")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-offset_top = 96.0
-offset_bottom = -48.0
+offset_top = 116.0
+offset_bottom = -72.0
 
 [node name="VBox_Alerts" type="VBoxContainer" parent="." unique_id=942200244]
 layout_mode = 1
@@ -269,6 +276,7 @@ text = "Mighty Test Button2"
 
 [connection signal="pressed" from="HBox_TopBar/Button_Save" to="." method="_on_button_save_pressed"]
 [connection signal="toggled" from="HBox_TopBar/Button_Inventory" to="." method="_on_button_inventory_toggled"]
+[connection signal="toggled" from="HBox_TopBar/Button_Map" to="." method="_on_button_map_toggled"]
 [connection signal="toggled" from="HBox_TopBar/Button_Quests" to="." method="_on_button_quests_toggled"]
 [connection signal="toggled" from="HBox_TopBar/Button_Log" to="." method="_on_button_log_toggled"]
 [connection signal="toggled" from="HBox_TopBar/Button_Settings" to="." method="_on_button_settings_toggled"]

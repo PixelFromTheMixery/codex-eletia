@@ -4,10 +4,14 @@ extends Node
 	"TestItem": {"qty": 1}
 }
 
-@export var stats: Dictionary= {
+@export var stats: Dictionary = {
 	"max_weight": 50, 
 	"current_weight": 0
 }
 
-@export var upgrades = {
+@export var reputation: Dictionary = {
+	"world": 0
+}
+
+@export var upgrades: Dictionary = {
 }
