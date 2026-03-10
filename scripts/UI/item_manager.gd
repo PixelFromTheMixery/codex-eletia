@@ -21,8 +21,9 @@ func load_inventory():
 		if Player.inventory[item_entry]["qty"] != 0:
 			display_new_item(item_entry)
 	for item_entry in item_pool:
-		Player.stats["current_weight"] += item_pool[item_entry].data.total_weight
+		Player.current_weight += item_pool[item_entry].data.total_weight
 	update_weight_display()
+
 
 # Fetch
 func get_inv_item(item_id: String):
@@ -32,7 +33,7 @@ func get_inv_item(item_id: String):
 # Update UI
 func update_weight_display():
 	"""Updates player weight display"""
-	weight_display.text = "%.1f/%.1f" % [Player.stats["current_weight"], Player.stats["max_weight"]]
+	weight_display.text = "%.1f/%.1f" % [Player.current_weight, Player.max_weight]
 
 
 func display_new_item(item_id: String):
@@ -48,14 +49,14 @@ func add_item(target_item_id:String, new_qty: int):
 	"""Creates or modifies item in display"""
 	target_item = get_inv_item(target_item_id)
 	if target_item:
-		Player.stats["current_weight"] += target_item.data.unit_weight * new_qty
+		Player.current_weight += target_item.data.unit_weight * new_qty
 		update_weight_display()
 		target_item.data.item_qty += new_qty
 		target_item.refresh_ui_labels()
 	else:
 		Player.inventory[target_item_id] = {"qty": new_qty}
 		display_new_item(target_item_id)
-		Player.stats["current_weight"] += item_pool[target_item_id].data.total_weight
+		Player.current_weight += item_pool[target_item_id].data.total_weight
 		update_weight_display()
 	target_item = null
 
@@ -66,11 +67,11 @@ func remove_item(target_item_id: String, target_qty: int):
 	if target_item:
 		if target_item.data.qty - target_qty <= 0:
 			Player.inventory.erase(target_item_id)
-			Player.stats["current_weight"] -= target_item.data.total_weight
+			Player.current_weight -= target_item.data.total_weight
 			item_pool[target_item_id].queue_free()
 			item_pool.erase(target_item_id)
 		else:
-			Player.stats["current_weight"] -= target_item.data.unit_weight * target_qty
+			Player.current_weight -= target_item.data.unit_weight * target_qty
 			target_item.data.qty -= target_qty
 		update_weight_display()
 		target_item.refresh_ui_labels()

@@ -4,14 +4,12 @@ extends Node
 	"TestItem": {"qty": 1}
 }
 
-@export var stats: Dictionary = {
-	"max_weight": 50, 
-	"current_weight": 0
-}
-
 @export var reputation: Dictionary = {
 	"world": 0
 }
 
 @export var upgrades: Dictionary = {
 }
+
+var max_weight: int = 50
+var current_weight: float = 0

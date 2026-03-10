@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bv80xrsbgxydx"]
 
 [ext_resource type="PackedScene" uid="uid://dj32f2yw6gwki" path="res://prefabs/panel_base.tscn" id="1_l5u2x"]
+[ext_resource type="Script" uid="uid://cr1gjyads25e3" path="res://scripts/UI/tile_manager.gd" id="2_l5u2x"]
 
 [node name="Panel_Map" unique_id=356670085 instance=ExtResource("1_l5u2x")]
+script = ExtResource("2_l5u2x")
 
 [node name="Label_Title" parent="." index="0" unique_id=1092411833]
 text = "Map"

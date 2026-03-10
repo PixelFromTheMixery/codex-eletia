@@ -5,7 +5,7 @@ extends Control
 @onready var panel_quests: Panel = $Panel_Quests
 @onready var panel_logs: Panel = $Panel_Logs
 @onready var panel_settings: Panel = $Panel_Settings
-var main_menu = preload("res://assets/button_group_main.tres")
+#var main_menu = preload("res://assets/button_group_main.tres")
 
 func _ready() -> void:
 	pass # Replace with function body.

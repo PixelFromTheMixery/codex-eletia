@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://dale37a6yx0u1"]
 
-[ext_resource type="Theme" uid="uid://cl3r7ns3s7gi7" path="res://assets/dev_theme.tres" id="1_itnev"]
+[ext_resource type="Theme" uid="uid://1h2uj7b8n0hk" path="res://assets/dev_theme.tres" id="1_itnev"]
 [ext_resource type="Script" uid="uid://bvwyejb1d2lpc" path="res://scripts/UI/view_manager.gd" id="1_sby6r"]
-[ext_resource type="ButtonGroup" uid="uid://btqd88t48n4c6" path="res://assets/button_group_main.tres" id="2_aj7gc"]
 [ext_resource type="Script" uid="uid://b0mqeed5f0b7v" path="res://scripts/UI/button_test.gd" id="4_vgkuo"]
 [ext_resource type="PackedScene" uid="uid://dgcm41jeaicml" path="res://scenes/panel_inventory.tscn" id="5_itnev"]
-[ext_resource type="PackedScene" uid="uid://dl3v0yh8apmiq" path="res://scenes/panel_map.tscn" id="5_p75v5"]
+[ext_resource type="PackedScene" uid="uid://bv80xrsbgxydx" path="res://scenes/panel_map.tscn" id="5_p75v5"]
 [ext_resource type="PackedScene" uid="uid://b34t11xnq1k45" path="res://scenes/panel_quests.tscn" id="6_itnev"]
 [ext_resource type="PackedScene" uid="uid://ckx3xbvo5pkfn" path="res://scenes/panel_logs.tscn" id="8_itnev"]
 [ext_resource type="PackedScene" uid="uid://dgy1wsfr6ch8i" path="res://scenes/panel_settings.tscn" id="9_goknb"]
@@ -155,14 +154,12 @@ grow_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-button_group = ExtResource("2_aj7gc")
 text = "Travel"
 
 [node name="Button_Dragons" type="Button" parent="HBox_BotBar" unique_id=1213819160]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-button_group = ExtResource("2_aj7gc")
 text = "Dragons"
 
 [node name="Button_Activities" type="Button" parent="HBox_BotBar" unique_id=1489469021]
@@ -170,7 +167,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 button_pressed = true
-button_group = ExtResource("2_aj7gc")
 text = "Activities"
 
 [node name="Button_Player" type="Button" parent="HBox_BotBar" unique_id=310686285]
