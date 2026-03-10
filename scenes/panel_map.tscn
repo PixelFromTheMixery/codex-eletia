@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bv80xrsbgxydx"]
+
+[ext_resource type="PackedScene" uid="uid://dj32f2yw6gwki" path="res://prefabs/panel_base.tscn" id="1_l5u2x"]
+
+[node name="Panel_Map" unique_id=356670085 instance=ExtResource("1_l5u2x")]
+
+[node name="Label_Title" parent="." index="0" unique_id=1092411833]
+text = "Map"
+
+[node name="Scroll" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="0" unique_id=379391004]
+size_flags_vertical = 1
+
+[node name="VBox" parent="VBox_Window/Scroll" index="0" unique_id=1495506934]
+size_flags_horizontal = 1
+
+[node name="Scroll_Map" type="ScrollContainer" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="1" unique_id=355193031]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Grid_Map" type="GridContainer" parent="VBox_Window/Scroll_Map" index="0" unique_id=338067022]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

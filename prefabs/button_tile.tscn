@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c42mlfb35dswr"]
+
+[ext_resource type="Theme" uid="uid://cqkeo1x28a752" path="res://assets/tile_button.tres" id="1_p54ri"]
+
+[node name="Button_Tile" type="Button" unique_id=1940528053]
+custom_minimum_size = Vector2(40, 40)
+theme = ExtResource("1_p54ri")
