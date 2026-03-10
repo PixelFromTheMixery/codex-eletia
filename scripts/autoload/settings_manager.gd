@@ -7,6 +7,3 @@ var logs: Dictionary = {
 var general: Dictionary = {
 	"Alert Timeout" : 3
 }
-
-func save():
-	Save.save_settings()
