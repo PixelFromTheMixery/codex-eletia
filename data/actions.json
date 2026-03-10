@@ -6,19 +6,19 @@
 		"reqs": [
 			{
 				"type": "item",
-				"name": "TestItem",
+				"id": "TestItem",
 				"qty": 1
 			}
 		],
 		"rews": [
 			{
 				"type": "item",
-				"name": "TestItem",
+				"id": "TestItem",
 				"qty": 1
 			}
 		],
 		"tags": [
-			"test action"
+			"test_action"
 		]
 	}
 }

@@ -1,0 +1,68 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "urn:shared",
+	"title": "Schema title",
+	"description": "Intent of the schema",
+	"type": "object",
+	"$defs": {
+		"entry_id": {
+			"type": "string",
+			"pattern": "^[A-Z][a-z]+(?:[A-Z][a-z]+)*$"
+		},
+		"variable": {
+			"type": "string",
+			"pattern": "^[a-z]+(?:_[a-z]+)*$"
+		},
+		"essence": {
+			"type": "string",
+			"enum": [
+				"Fire",
+				"Water",
+				"Air",
+				"Earth",
+				"Arcane",
+				"Plant",
+				"Ghost",
+				"Mystic",
+				"Hallow",
+				"Space",
+				"Time"
+			]
+		},
+		"tags": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"pattern": "^[a-z]+$"
+			}
+		},
+		"exchange": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"propertyNames": {
+					"$ref": "variable"
+				},
+				"properties": {
+					"type": {
+						"type": "string",
+						"$comment": "Expand logic per type",
+						"enum": [
+							"item",
+							"dragon",
+							"enemy",
+							"location",
+							"npc"
+						]
+					},
+					"id": {
+						"$ref": "entry_id"
+					},
+					"qty": {
+						"type": "number"
+					}
+				}
+			}
+		}
+	}
+}

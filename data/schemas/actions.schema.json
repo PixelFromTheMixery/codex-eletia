@@ -1,0 +1,44 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "urn:actions",
+    "title": "Action Entries",
+    "description": "Check Action Library",
+    "type": "object",
+    "propertyNames": {
+        "$ref": "urn:shared#/$defs/entry_id"
+    },
+    "additionalProperties": {
+        "type": "object",
+        "propertyNames": {
+            "$ref": "urn:shared#/$defs/variable"
+        },
+        "required": [
+            "action_name",
+            "action",
+            "time",
+            "reqs",
+            "rews",
+            "tags"
+        ],
+        "properties": {
+            "action_name": {
+                "type": "string"
+            },
+            "action": {
+                "type": "string"
+            },
+            "time": {
+                "type": "number"
+            },
+            "reqs": {
+                "$ref": "urn:shared#/$defs/exchange"
+            },
+            "rews": {
+                "$ref": "urn:shared#/$defs/exchange"
+            },
+            "tags": {
+                "$ref": "urn:shared#/$defs/tags"
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "urn:upgrades",
+    "title": "Upgrade Entries",
+    "description": "Check Upgrade Library",
+    "type": "object",
+    "propertyNames": {
+        "$ref": "urn:shared#/$defs/essence"
+    },
+    "$comment": "Will change to just properties",
+    "additionalProperties": {
+        "type": "object",
+        "propertyNames": {
+            "$ref": "urn:shared#/$defs/variable"
+        },
+        "additionalProperties": {
+            "type": "object",
+            "propertyNames": {
+                "$ref": "urn:shared#/$defs/variable"
+            },
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "detail": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

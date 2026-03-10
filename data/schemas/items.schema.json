@@ -1,0 +1,32 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "urn:items",
+	"title": "Item Entries",
+	"description": "Check Item Library",
+	"type": "object",
+	"propertyNames": {
+		"$ref": "urn:shared#/$defs/entry_id"
+	},
+	"additionalProperties": {
+		"type": "object",
+		"propertyNames": {
+			"$ref": "urn:shared#/$defs/variable"
+		},
+		"required": [
+			"item_name",
+			"unit_weight",
+			"tags"
+		],
+		"properties": {
+			"item_name": {
+				"type": "string"
+			},
+			"unit_weight": {
+				"type": "number"
+			},
+			"tags": {
+				"$ref": "urn:shared#/$defs/tags"
+			}
+		}
+	}
+}
