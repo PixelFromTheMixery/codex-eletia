@@ -22,9 +22,15 @@ func _ready():
 func unmap_object(obj:Object):
 	var obj_dict: Dictionary = {}
 	var props = obj.get_property_list()
+
 	for prop in props:
 		if prop.usage & PROPERTY_USAGE_SCRIPT_VARIABLE:
-			obj_dict[prop.name] = obj.get(prop.name)
+			var prop_name = prop.name
+			var val = obj.get(prop_name)
+			if val is Vector2 or val is Array or val is Color:
+				obj_dict[prop_name] = var_to_str(val)
+			else:
+				obj_dict[prop_name] = val
 	return obj_dict
 
 func map_object(obj_dict: Dictionary, object_name: String):
@@ -39,9 +45,28 @@ func map_object(obj_dict: Dictionary, object_name: String):
 
 	for key in obj_dict.keys():
 		if key in target_obj:
-			target_obj.set(key, obj_dict[key])
+			var value = value_parsing(obj_dict, key)
+			target_obj.set(key, value)
 		else:
-			print("Warning: Property ", key, " not found on ", object_name)
+			print("Warning: Property ", key, " not found on ", target_obj.name)
+
+func value_parsing(obj_dict, key):
+	var value = obj_dict[key]
+	if value is String:
+		var parsed_value = str_to_var(value)
+		if parsed_value != null or value == "null":
+			value = parsed_value
+	if key == "tiles" and value is Dictionary:
+		var repaired_dict = {}
+		for inner_key in value.keys():
+			if inner_key is String:
+				var real_key = str_to_var(inner_key)
+				if real_key != null:
+					repaired_dict[real_key] = value[inner_key]
+				else:
+					repaired_dict[inner_key] = value[inner_key]
+		value = repaired_dict
+	return value
 
 func verify_save_directory():
 	"""Prepares file directory for interaction"""
@@ -88,15 +113,13 @@ func read_write(path: String, save_message: String = "", read = false, data = un
 			return file.get_var() if file else {}
 
 	else:
-		WorkerThreadPool.add_task(func():
-			if DEV or "settings" in path:
-				var file = FileAccess.open(path, FileAccess.WRITE)
-				if file:
-					file.store_string(JSON.stringify(data, "\t"))
-			else:
-				var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, PASS)
-				if file:
-					file.store_var(data)
-		)
+		if DEV or "settings" in path:
+			var file = FileAccess.open(path, FileAccess.WRITE)
+			if file:
+				file.store_string(JSON.stringify(data, "\t"))
+		else:
+			var file = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, PASS)
+			if file:
+				file.store_var(data)
 	if save_message != "":
 		SignalBus.create_alert.emit.call_deferred(save_message)

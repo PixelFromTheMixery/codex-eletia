@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Shared="*uid://b5l5q1x2urqj"
 SignalBus="*uid://d20o8gs7iq0yj"
 Settings="*uid://skqbwkxaygtq"
 Save="*uid://e04q0u8agwcq"

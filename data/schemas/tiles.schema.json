@@ -1,52 +1,55 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "urn:tiles",
-    "title": "Tile Entries",
-    "description": "Check Tile Library",
-    "type": "object",
-    "propertyNames": {
-        "$ref": "urn:shared#/$defs/entry_id"
-    },
-    "additionalProperties": {
-        "type": "object",
-        "propertyNames": {
-            "$ref": "urn:shared#/$defs/variable"
-        },
-        "properties": {
-            "essence": {
-                "$ref": "urn:shared#/$defs/essence"
-            },
-            "info": {
-                "type": "string"
-            },
-            "tile_name": {
-                "type": "string"
-            },
-            "tile_type": {
-                "anyOf": [
-                    {
-                        "$ref": "urn:shared#/$defs/essence"
-                    },
-                    {
-                        "type": "string",
-                        "enum": [
-                            "Capital",
-                            "City",
-                            "Town",
-                            "Outpost",
-                            "Colony",
-                            "Refuge",
-                            "Hamlet",
-                            "Fort",
-                            "Sanctuary",
-                            "Stronghold"
-                        ]
-                    }
-                ]
-            },
-            "tags": {
-                "$ref": "urn:shared#/$defs/tags"
-            }
-        }
-    }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "urn:tiles",
+	"title": "Tile Entries",
+	"description": "Check Tile Library",
+	"type": "object",
+	"propertyNames": {
+		"$ref": "urn:shared#/$defs/entry_id"
+	},
+	"additionalProperties": {
+		"type": "object",
+		"propertyNames": {
+			"$ref": "urn:shared#/$defs/variable"
+		},
+		"properties": {
+			"essence": {
+				"$ref": "urn:shared#/$defs/essence"
+			},
+			"info": {
+				"type": "string"
+			},
+			"tile_name": {
+				"type": "string"
+			},
+			"tile_type": {
+				"anyOf": [
+					{
+						"$ref": "urn:shared#/$defs/essence"
+					},
+					{
+						"type": "string",
+						"enum": [
+							"Path",
+							"Road",
+							"Path",
+							"Capital",
+							"City",
+							"Town",
+							"Outpost",
+							"Colony",
+							"Refuge",
+							"Hamlet",
+							"Fort",
+							"Sanctuary",
+							"Stronghold"
+						]
+					}
+				]
+			},
+			"tags": {
+				"$ref": "urn:shared#/$defs/tags"
+			}
+		}
+	}
 }

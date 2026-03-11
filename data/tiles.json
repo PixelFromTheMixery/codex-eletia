@@ -1,198 +1,198 @@
 {
-    "FireOutpost": {
-        "essence": "Fire",
-        "info": "Resource collection area, professionals for learning skills",
-        "tags": [],
-        "tile_name": "Emberforge",
-        "tile_type": "Outpost"
-    },
-    "FireTown": {
-        "essence": "Fire",
-        "info": "Small Population, general store, inn, maybe a side quest, well-defined community, infra, economy",
-        "tags": [],
-        "tile_name": "Igniferia",
-        "tile_type": "Town"
-    },
-    "FireCity": {
-        "essence": "Fire",
-        "info": "large urban settlement",
-        "tags": [],
-        "tile_name": "Incendria",
-        "tile_type": "City"
-    },
-    "FireCapital": {
-        "essence": "Fire",
-        "info": "Primary or admin city, institution and leaders",
-        "tags": [],
-        "tile_name": "Infernium",
-        "tile_type": "Capital"
-    },
-    "WaterColony": {
-        "essence": "Water",
-        "info": "Settlement in a new territory, Nomadic",
-        "tags": [],
-        "tile_name": "Colony",
-        "tile_type": "Colony"
-    },
-    "WaterRefuge": {
-        "essence": "Water",
-        "info": "Safe haven",
-        "tags": [],
-        "tile_name": "Refuge",
-        "tile_type": "Refuge"
-    },
-    "WaterHamlet": {
-        "essence": "Water",
-        "info": "A few houses and buildings",
-        "tags": [],
-        "tile_name": "Hamlet",
-        "tile_type": "Hamlet"
-    },
-    "WaterFort": {
-        "essence": "Water",
-        "info": "Fortified military structure, base or defense",
-        "tags": [],
-        "tile_name": "Fort",
-        "tile_type": "Fort"
-    },
-    "WaterSanctuary": {
-        "essence": "Water",
-        "info": "Sacred place",
-        "tags": [],
-        "tile_name": "Sanctuary",
-        "tile_type": "Sanctuary"
-    },
-    "WaterStronghold": {
-        "essence": "Water",
-        "info": "Central hub of power and defense",
-        "tags": [],
-        "tile_name": "Stronghold",
-        "tile_type": "Stronghold"
-    },
-    "FireFire": {
-        "essence": "Fire",
-        "info": "Even those born with fire essence cannot tolerate the heat of this place",
-        "tags": [],
-        "tile_name": "Outcrop",
-        "tile_type": "Fire"
-    },
-    "WaterFire": {
-        "essence": "Water",
-        "info": "Lethality of Water essence comes together with the precision of Fire made weaponry",
-        "tags": [],
-        "tile_name": "Quagarsenal",
-        "tile_type": "Fire"
-    },
-    "FireEarth": {
-        "essence": "Fire",
-        "info": "The hardest metals are made within the unyeilding stone",
-        "tags": [],
-        "tile_name": "Terrafurnace",
-        "tile_type": "Earth"
-    },
-    "FireAir": {
-        "essence": "Fire",
-        "info": "Enchanted bellows are used when Air essence is in short supply",
-        "tags": [],
-        "tile_name": "Glassworks",
-        "tile_type": "Air"
-    },
-    "FireArcane": {
-        "essence": "Fire",
-        "info": "The constant churn of artistic intent makes it much easier to fuse ideas",
-        "tags": [],
-        "tile_name": "Spellforge",
-        "tile_type": "Arcane"
-    },
-    "FireMystic": {
-        "essence": "Fire",
-        "info": "Most aren't sure what purpose these trinkets serve beyond aesthetics",
-        "tags": [],
-        "tile_name": "Pyrocurio",
-        "tile_type": "Mystic"
-    },
-    "FireTime": {
-        "essence": "Fire",
-        "info": "A history of fire techniques to learn from",
-        "tags": [],
-        "tile_name": "Galleria",
-        "tile_type": "Time"
-    },
-    "FirePlant": {
-        "essence": "Fire",
-        "info": "Regular backburning has tinted the soil black",
-        "tags": [],
-        "tile_name": "Emberstalk",
-        "tile_type": "Plant"
-    },
-    "FireGhost": {
-        "essence": "Fire",
-        "info": "Cremation ground",
-        "tags": [],
-        "tile_name": "Ancestral Ashes",
-        "tile_type": "Ghost"
-    },
-    "FireHallow": {
-        "essence": "Fire",
-        "info": "Rejuvenating waters",
-        "tags": [],
-        "tile_name": "Hot Spring",
-        "tile_type": "Hallow"
-    },
-    "WaterTown": {
-        "essence": "Water",
-        "info": "Small Population, general store, inn, maybe a side quest, well-defined community, infra, economy",
-        "tags": [],
-        "tile_name": "Town",
-        "tile_type": "Town"
-    },
-    "WaterCity": {
-        "essence": "Water",
-        "info": "large urban settlement",
-        "tags": [],
-        "tile_name": "Maritum",
-        "tile_type": "City"
-    },
-    "WaterCapital": {
-        "essence": "Water",
-        "info": "Primary or admin city, institution and leaders",
-        "tags": [],
-        "tile_name": "Aquatia",
-        "tile_type": "Capital"
-    },
-    "WaterWater": {
-        "essence": "Water",
-        "info": "Unforgiving life in murky water",
-        "tags": [],
-        "tile_name": "Swamp",
-        "tile_type": "Water"
-    },
-    "WaterEarth": {
-        "essence": "Water",
-        "info": "Meditation location to attune Water and Earth",
-        "tags": [],
-        "tile_name": "Basin",
-        "tile_type": "Earth"
-    },
-    "WaterAir": {
-        "essence": "Water",
-        "info": "A pocket of life amid the endless dunes",
-        "tags": [],
-        "tile_name": "Oasis",
-        "tile_type": "Air"
-    },
-    "WaterArcane": {
-        "essence": "Water",
-        "info": "Water moved differently here, with fiercer velocity",
-        "tags": [],
-        "tile_name": "Safewell",
-        "tile_type": "Arcane"
-    },
-    "WaterTime": {
-        "essence": "Water",
-        "info": "Memories stored in ice statues",
-        "tags": [],
-        "tile_name": "Marshvalor",
-        "tile_type": "Time"
-    }
+	"FireOutpost": {
+		"essence": "Fire",
+		"info": "Resource collection area, professionals for learning skills",
+		"tags": [],
+		"tile_name": "Emberforge",
+		"tile_type": "Outpost"
+	},
+	"FireTown": {
+		"essence": "Fire",
+		"info": "Small Population, general store, inn, maybe a side quest, well-defined community, infra, economy",
+		"tags": [],
+		"tile_name": "Igniferia",
+		"tile_type": "Town"
+	},
+	"FireCity": {
+		"essence": "Fire",
+		"info": "large urban settlement",
+		"tags": [],
+		"tile_name": "Incendria",
+		"tile_type": "City"
+	},
+	"FireCapital": {
+		"essence": "Fire",
+		"info": "Primary or admin city, institution and leaders",
+		"tags": [],
+		"tile_name": "Infernium",
+		"tile_type": "Capital"
+	},
+	"WaterColony": {
+		"essence": "Water",
+		"info": "Settlement in a new territory, Nomadic",
+		"tags": [],
+		"tile_name": "Colony",
+		"tile_type": "Colony"
+	},
+	"WaterRefuge": {
+		"essence": "Water",
+		"info": "Safe haven",
+		"tags": [],
+		"tile_name": "Refuge",
+		"tile_type": "Refuge"
+	},
+	"WaterHamlet": {
+		"essence": "Water",
+		"info": "A few houses and buildings",
+		"tags": [],
+		"tile_name": "Hamlet",
+		"tile_type": "Hamlet"
+	},
+	"WaterFort": {
+		"essence": "Water",
+		"info": "Fortified military structure, base or defense",
+		"tags": [],
+		"tile_name": "Fort",
+		"tile_type": "Fort"
+	},
+	"WaterSanctuary": {
+		"essence": "Water",
+		"info": "Sacred place",
+		"tags": [],
+		"tile_name": "Sanctuary",
+		"tile_type": "Sanctuary"
+	},
+	"WaterStronghold": {
+		"essence": "Water",
+		"info": "Central hub of power and defense",
+		"tags": [],
+		"tile_name": "Stronghold",
+		"tile_type": "Stronghold"
+	},
+	"FireFire": {
+		"essence": "Fire",
+		"info": "Even those born with fire essence cannot tolerate the heat of this place",
+		"tags": [],
+		"tile_name": "Outcrop",
+		"tile_type": "Fire"
+	},
+	"WaterFire": {
+		"essence": "Water",
+		"info": "Lethality of Water essence comes together with the precision of Fire made weaponry",
+		"tags": [],
+		"tile_name": "Quagarsenal",
+		"tile_type": "Fire"
+	},
+	"FireEarth": {
+		"essence": "Fire",
+		"info": "The hardest metals are made within the unyeilding stone",
+		"tags": [],
+		"tile_name": "Terrafurnace",
+		"tile_type": "Earth"
+	},
+	"FireAir": {
+		"essence": "Fire",
+		"info": "Enchanted bellows are used when Air essence is in short supply",
+		"tags": [],
+		"tile_name": "Glassworks",
+		"tile_type": "Air"
+	},
+	"FireArcane": {
+		"essence": "Fire",
+		"info": "The constant churn of artistic intent makes it much easier to fuse ideas",
+		"tags": [],
+		"tile_name": "Spellforge",
+		"tile_type": "Arcane"
+	},
+	"FireMystic": {
+		"essence": "Fire",
+		"info": "Most aren't sure what purpose these trinkets serve beyond aesthetics",
+		"tags": [],
+		"tile_name": "Pyrocurio",
+		"tile_type": "Mystic"
+	},
+	"FireTime": {
+		"essence": "Fire",
+		"info": "A history of fire techniques to learn from",
+		"tags": [],
+		"tile_name": "Galleria",
+		"tile_type": "Time"
+	},
+	"FirePlant": {
+		"essence": "Fire",
+		"info": "Regular backburning has tinted the soil black",
+		"tags": [],
+		"tile_name": "Emberstalk",
+		"tile_type": "Plant"
+	},
+	"FireGhost": {
+		"essence": "Fire",
+		"info": "Cremation ground",
+		"tags": [],
+		"tile_name": "Ancestral Ashes",
+		"tile_type": "Ghost"
+	},
+	"FireHallow": {
+		"essence": "Fire",
+		"info": "Rejuvenating waters",
+		"tags": [],
+		"tile_name": "Hot Spring",
+		"tile_type": "Hallow"
+	},
+	"WaterTown": {
+		"essence": "Water",
+		"info": "Small Population, general store, inn, maybe a side quest, well-defined community, infra, economy",
+		"tags": [],
+		"tile_name": "Town",
+		"tile_type": "Town"
+	},
+	"WaterCity": {
+		"essence": "Water",
+		"info": "large urban settlement",
+		"tags": [],
+		"tile_name": "Maritum",
+		"tile_type": "City"
+	},
+	"WaterCapital": {
+		"essence": "Water",
+		"info": "Primary or admin city, institution and leaders",
+		"tags": [],
+		"tile_name": "Aquatia",
+		"tile_type": "Capital"
+	},
+	"WaterWater": {
+		"essence": "Water",
+		"info": "Unforgiving life in murky water",
+		"tags": [],
+		"tile_name": "Swamp",
+		"tile_type": "Water"
+	},
+	"WaterEarth": {
+		"essence": "Water",
+		"info": "Meditation location to attune Water and Earth",
+		"tags": [],
+		"tile_name": "Basin",
+		"tile_type": "Earth"
+	},
+	"WaterAir": {
+		"essence": "Water",
+		"info": "A pocket of life amid the endless dunes",
+		"tags": [],
+		"tile_name": "Oasis",
+		"tile_type": "Air"
+	},
+	"WaterArcane": {
+		"essence": "Water",
+		"info": "Water moved differently here, with fiercer velocity",
+		"tags": [],
+		"tile_name": "Safewell",
+		"tile_type": "Arcane"
+	},
+	"WaterTime": {
+		"essence": "Water",
+		"info": "Memories stored in ice statues",
+		"tags": [],
+		"tile_name": "Marshvalor",
+		"tile_type": "Time"
+	}
 }

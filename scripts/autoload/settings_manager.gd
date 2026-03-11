@@ -7,3 +7,6 @@ var logs: Dictionary = {
 var general: Dictionary = {
 	"Alert Timeout" : 3
 }
+var map: Dictionary = {
+	"Cell Size": 4
+}

@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://dtnk0656e4ar7" path="res://prefabs/button_tile.gd" id="2_tm4py"]
 
 [node name="Button_Tile" type="Button" unique_id=1940528053]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(8, 8)
+offset_right = 8.0
+offset_bottom = 8.0
 theme = ExtResource("1_p54ri")
 script = ExtResource("2_tm4py")
