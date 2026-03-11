@@ -30,9 +30,9 @@
 					{
 						"type": "string",
 						"enum": [
-							"Path",
 							"Road",
 							"Path",
+							"Trail",
 							"Capital",
 							"City",
 							"Town",
