@@ -25,6 +25,7 @@ const PATH_LIST: Dictionary[String, int] = {
 
 
 var chunk_size: int
+var half_chunk: int
 var segments: int
 var full_size: int
 var colour_keys: Array[String] = Shared.COLOUR_MAP.keys().duplicate()
@@ -35,20 +36,26 @@ var astar: AStarGrid2D
 var poi_map: Dictionary[Array, Dictionary]
 
 
-
 func recreate_world(grid_map):
 	reset_world(grid_map)
 	determine_patches()
 	generate_basic_grid()
 	patch_application()
+	#tile_check()
 	ruffle_edges()
 	#locations()
-	#tile_deviation()
+	tile_deviation()
 	World.tiles = world_tiles
 	Save.save_world()
 
+func tile_check():
+	for tile in world_tiles:
+		if "essence" not in world_tiles[tile].keys():
+			pass
+
 func reset_world(grid_map: GridContainer):
 	chunk_size = World.chunk_size
+	half_chunk = chunk_size / 2
 	segments = World.chunk_segments
 	full_size = chunk_size * segments
 	var existing_tiles = grid_map.get_children()
@@ -59,12 +66,12 @@ func reset_world(grid_map: GridContainer):
 
 func determine_patches():
 	var available_patches: Array[String] = colour_keys.duplicate()
-	var missing_cultures: Array[String] = ["Time", "Space", "Mystic"]
+	var missing_cultures: Array[String] = ["Time", "Space", "Mystic", "Ice"]
 	available_patches = available_patches.filter(func(patch): 
 		return not patch in missing_cultures
 	)
 
-	while len(available_patches) < segments*segments :
+	while len(available_patches) < segments*(segments-2):
 		if randf() < 0.75:
 			available_patches.append("Sea")
 		else:
@@ -73,8 +80,25 @@ func determine_patches():
 
 	for y in range(segments):
 		for x in range(segments):
-			if not available_patches.is_empty():
-				patches[Rect2i(chunk_size*x, chunk_size*y, chunk_size,chunk_size)]= available_patches.pop_back()
+			print(len(available_patches))
+			var patches_left = available_patches.duplicate()
+			patches_left.reverse()
+			print(patches_left)
+			var current_chunk_h = chunk_size
+			var y_offset = 0
+			var essence = "Ice"
+			if y == 0:
+				current_chunk_h = half_chunk
+				
+			elif y == segments - 1:
+				current_chunk_h = half_chunk
+				y_offset = (y * chunk_size) + (half_chunk)
+			else:
+				y_offset = (y * chunk_size)
+				essence = available_patches.pop_back()
+
+			var rect = Rect2i(x * chunk_size, y_offset, chunk_size, current_chunk_h)
+			patches[rect] = essence
 
 
 func generate_basic_grid():
@@ -83,7 +107,8 @@ func generate_basic_grid():
 			var current_pos = [x,y]
 			var tile_data = {
 				"coords": current_pos,
-				"discovered": true
+				"discovered": true,
+				"essence": "Sea"
 			}
 			world_tiles[current_pos] = tile_data
 
@@ -113,7 +138,7 @@ func ruffle_edges():
 			var idx = edge_to_offset_idx[tile_data.side]
 			var neighbor_tile = neighbours[OFFSETS[idx]]
 
-			if randf() < 0.4:
+			if randf() < 0.6:
 				actual_tile["essence"] = neighbor_tile["essence"]
 
 func locations():
@@ -156,10 +181,10 @@ func tile_neighbours(x:int, y:int, depth: int = 1):
 
 func tile_deviation():
 	for tile in world_tiles:
-		if randf() < 0.15:
+		if randf() < 0.2:
 			var new_essence = colour_keys.pick_random()
 			var current_tile = world_tiles[tile]
-			if current_tile["essence"] != new_essence and current_tile["essence"] not in ["Sea", "Mountain"]:
+			if current_tile["essence"] != new_essence and current_tile["essence"] not in ["Sea", "Mountain", "Ice"]:
 				current_tile["type"] = current_tile["essence"]
 				current_tile["essence"] = new_essence
 				current_tile["tile_id"] = current_tile["type"]+new_essence
