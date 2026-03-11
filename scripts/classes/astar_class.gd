@@ -22,11 +22,14 @@ func update_map_pres(new_size):
 	# Needs to be overwritten for wrapping
 
 func get_terrain_weight_at(pos: Vector2) -> float:
+	return World.tiles[[pos.x,pos.y]]["terrain"]
 	
-	# Logic to interface with your TileMap would go here
-	return 1.0
-
 func wrapped_distance(a: Vector2, b: Vector2) -> float:
+	"""
+	Used to check the distance for map wrap.
+	If the distance is more than half the map, the wrap-around is shorter
+	"""
+	
 	var dx = abs(a.x - b.x)
 	var dy = abs(a.y - b.y)
 

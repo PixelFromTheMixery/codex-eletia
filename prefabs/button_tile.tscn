@@ -9,3 +9,5 @@ offset_right = 8.0
 offset_bottom = 8.0
 theme = ExtResource("1_p54ri")
 script = ExtResource("2_tm4py")
+
+[connection signal="minimum_size_changed" from="." to="." method="_on_minimum_size_changed"]

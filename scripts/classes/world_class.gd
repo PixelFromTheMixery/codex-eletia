@@ -8,7 +8,6 @@ const OFFSETS = [
 ]
 
 const TYPE_LIST: Array[String] = [
-	"Path",
 	"Outpost",
 	"Colony",
 	"Refuge",
@@ -17,6 +16,12 @@ const TYPE_LIST: Array[String] = [
 	"Sanctuary",
 	"Stronghold"
 ]
+
+const PATH_LIST: Dictionary[String, int] = {
+	"Trail": 2,
+	"Path": 1,
+	"Road": 0,
+}
 
 
 var chunk_size: int
@@ -54,9 +59,6 @@ func reset_world(grid_map: GridContainer):
 
 func determine_patches():
 	var available_patches: Array[String] = colour_keys.duplicate()
-	for colour in colour_keys.duplicate():
-		if randf() < 0.5:
-			available_patches.append(colour)
 	var missing_cultures: Array[String] = ["Time", "Space", "Mystic"]
 	available_patches = available_patches.filter(func(patch): 
 		return not patch in missing_cultures
@@ -114,6 +116,8 @@ func ruffle_edges():
 			if randf() < 0.4:
 				actual_tile["essence"] = neighbor_tile["essence"]
 
+func locations():
+	pass
 
 func get_edge_data(rect: Rect2i) -> Array:
 	var list = []

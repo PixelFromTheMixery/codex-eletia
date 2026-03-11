@@ -15,6 +15,9 @@ var universe: Dictionary = {
 		"world": {}
 	}
 }
+var settings = {
+	"settings" : {}
+}
 
 func _ready():
 	verify_save_directory()
@@ -40,6 +43,8 @@ func map_object(obj_dict: Dictionary, object_name: String):
 			target_obj = Player
 		"world":
 			target_obj = World
+		"settings":
+			target_obj = Settings
 		_:
 			print("Error: Target object not found for ", object_name)
 
@@ -82,6 +87,7 @@ func load_data():
 	universe = read_write(SAVE_FILE_NAME, "", true)
 	map_object(universe[WORLD]["player"], "player")
 	map_object(universe[WORLD]["world"], "world")
+	map_object(settings, "settings")
 
 func save_player():
 	universe[WORLD]["player"] = unmap_object(Player)
@@ -101,7 +107,7 @@ func save_session(initial: bool = false):
 		read_write(SAVE_FILE_NAME, "Session Saved")
 
 func save_settings():
-	read_write(SAVE_DIR + "settings.json", "Settings Saved", unmap_object(Settings))
+	read_write(SAVE_DIR + "settings.json", "Settings Saved", false, unmap_object(Settings))
 
 func read_write(path: String, save_message: String = "", read = false, data = universe):
 	if read:

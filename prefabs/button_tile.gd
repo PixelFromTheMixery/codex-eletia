@@ -9,3 +9,6 @@ var data: MapTileData
 func _ready() -> void:
 	#name = TODO
 	self_modulate = data.base_colour
+
+func _on_minimum_size_changed() -> void:
+	update_minimum_size()

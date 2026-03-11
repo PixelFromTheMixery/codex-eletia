@@ -9,17 +9,81 @@ script = ExtResource("2_l5u2x")
 [node name="Label_Title" parent="." index="0" unique_id=1092411833]
 text = "Map"
 
-[node name="Scroll" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="0" unique_id=379391004]
+[node name="HBoxSettings" type="HBoxContainer" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="0" unique_id=334480399]
+layout_mode = 2
+
+[node name="Fold_Settings" type="FoldableContainer" parent="VBox_Window/HBoxSettings" index="0" unique_id=1445159548]
+layout_mode = 2
+size_flags_horizontal = 3
+folded = true
+title = "Settings"
+title_alignment = 1
+
+[node name="Grid_Settings" type="GridContainer" parent="VBox_Window/HBoxSettings/Fold_Settings" index="0" unique_id=807582516]
+visible = false
+layout_mode = 2
+columns = 2
+
+[node name="Label_CellSize" type="Label" parent="VBox_Window/HBoxSettings/Fold_Settings/Grid_Settings" index="0" unique_id=880707494]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cell Size"
+
+[node name="SpinBox_CellSize" type="SpinBox" parent="VBox_Window/HBoxSettings/Fold_Settings/Grid_Settings" index="1" unique_id=1619299409]
+layout_mode = 2
+min_value = 8.0
+max_value = 64.0
+step = 4.0
+value = 8.0
+
+[node name="Button_Small" type="Button" parent="VBox_Window/HBoxSettings" index="1" unique_id=1633005782]
+custom_minimum_size = Vector2(31, 31)
+layout_mode = 2
+size_flags_vertical = 0
+text = "-"
+
+[node name="Button_Big" type="Button" parent="VBox_Window/HBoxSettings" index="2" unique_id=1392197459]
+custom_minimum_size = Vector2(31, 31)
+layout_mode = 2
+size_flags_vertical = 0
+text = "+"
+
+[node name="Scroll" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="1" unique_id=379391004]
+visible = false
 size_flags_vertical = 1
 
-[node name="VBox" parent="VBox_Window/Scroll" index="0" unique_id=1495506934]
-size_flags_horizontal = 1
-
-[node name="Scroll_Map" type="ScrollContainer" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="1" unique_id=355193031]
+[node name="Fold_TileInfo" type="FoldableContainer" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="2" unique_id=242288924]
 layout_mode = 2
+folded = true
+title = "Tile Info"
+title_alignment = 1
+
+[node name="VBox_TileInfo" type="VBoxContainer" parent="VBox_Window/Fold_TileInfo" index="0" unique_id=946221007]
+visible = false
+layout_mode = 2
+
+[node name="Scroll_Map" type="ScrollContainer" parent="." index="3" unique_id=355193031]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 136.0
+offset_right = -16.0
+offset_bottom = -16.0
 size_flags_vertical = 3
 
-[node name="Grid_Map" type="GridContainer" parent="VBox_Window/Scroll_Map" index="0" unique_id=338067022]
+[node name="Center" type="CenterContainer" parent="Scroll_Map" index="0" unique_id=1608397382]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 0
+
+[node name="Grid_Map" type="GridContainer" parent="Scroll_Map/Center" index="0" unique_id=338067022]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="value_changed" from="VBox_Window/HBoxSettings/Fold_Settings/Grid_Settings/SpinBox_CellSize" to="." method="_on_spin_box_cell_size_value_changed"]
+[connection signal="pressed" from="VBox_Window/HBoxSettings/Button_Small" to="." method="_on_button_small_pressed"]
+[connection signal="pressed" from="VBox_Window/HBoxSettings/Button_Big" to="." method="_on_button_big_pressed"]
