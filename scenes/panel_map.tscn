@@ -62,24 +62,17 @@ title_alignment = 1
 visible = false
 layout_mode = 2
 
-[node name="Scroll_Map" type="ScrollContainer" parent="." index="3" unique_id=355193031]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 136.0
-offset_right = -16.0
-offset_bottom = -16.0
+[node name="Scroll_Map" type="ScrollContainer" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="3" unique_id=355193031]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Center" type="CenterContainer" parent="Scroll_Map" index="0" unique_id=1608397382]
+[node name="Center" type="CenterContainer" parent="VBox_Window/Scroll_Map" index="0" unique_id=1608397382]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 
-[node name="Grid_Map" type="GridContainer" parent="Scroll_Map/Center" index="0" unique_id=338067022]
+[node name="Grid_Map" type="GridContainer" parent="VBox_Window/Scroll_Map/Center" index="0" unique_id=338067022]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

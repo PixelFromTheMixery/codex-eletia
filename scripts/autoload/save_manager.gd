@@ -8,15 +8,13 @@ const SESSION: String = "1"
 const WORLD: String = "world_" + SESSION
 const FORMAT = ".json" if DEV else ".bin"
 const SAVE_FILE_NAME = SAVE_DIR + SAVE_SLOT + FORMAT
+const SETTINGS_FILE = "user://settings.json"
 
 var universe: Dictionary = {
 	"world_1": { 
 		"player": {},
 		"world": {}
 	}
-}
-var settings = {
-	"settings" : {}
 }
 
 func _ready():
@@ -87,6 +85,7 @@ func load_data():
 	universe = read_write(SAVE_FILE_NAME, "", true)
 	map_object(universe[WORLD]["player"], "player")
 	map_object(universe[WORLD]["world"], "world")
+	var settings = read_write(SETTINGS_FILE, "", true)
 	map_object(settings, "settings")
 
 func save_player():
@@ -105,9 +104,10 @@ func save_session(initial: bool = false):
 		read_write(SAVE_FILE_NAME)
 	else:
 		read_write(SAVE_FILE_NAME, "Session Saved")
-
+	
+	
 func save_settings():
-	read_write(SAVE_DIR + "settings.json", "Settings Saved", false, unmap_object(Settings))
+	read_write(SETTINGS_FILE, "Settings Saved", false, unmap_object(Settings))
 
 func read_write(path: String, save_message: String = "", read = false, data = universe):
 	if read:

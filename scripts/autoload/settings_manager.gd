@@ -8,5 +8,5 @@ var general: Dictionary = {
 	"Alert Timeout" : 3
 }
 var map: Dictionary = {
-	"Cell Size": 4
+	"Cell Size": 8
 }
