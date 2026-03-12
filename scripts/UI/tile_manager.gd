@@ -29,19 +29,18 @@ func create_tile(tile: Array):
 	button_map[tile_data.coords] = tile_display
 
 func update_cell_size(new_value: int):
-	cell_size = new_value
-	Settings.map["Cell Size"] = cell_size
-	spinbox_cellsize.value = cell_size
-	button_small.disabled = true if cell_size == 8 else false
-	button_big.disabled = true if cell_size == 64 else false
-	for button in button_map:
-		button_map[button].custom_minimum_size = Vector2(cell_size, cell_size)
+	Settings.map["Cell Size"] = new_value
+	spinbox_cellsize.value = new_value
+	button_small.disabled = true if new_value == 8 else false
+	button_big.disabled = true if new_value == 64 else false
+	for button in button_map.values():
+		button.custom_minimum_size = Vector2(new_value, new_value)
+		button.update_icon(new_value)
 	#update astat when implement
 	Save.save_settings()
 
 func _on_spin_box_cell_size_value_changed(value: int) -> void:
 	update_cell_size(value)
-
 
 func _on_button_small_pressed() -> void:
 	update_cell_size(spinbox_cellsize.value - 4)

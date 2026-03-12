@@ -91,7 +91,6 @@ func update_progress_label(current_time):
 
 func _on_button_action_pressed() -> void:
 	if tween and tween.is_running():
-		print(tween.is_running())
 		tween.kill()
 		reset_timer()
 	else:

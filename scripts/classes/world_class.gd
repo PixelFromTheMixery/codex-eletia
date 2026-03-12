@@ -32,6 +32,7 @@ var colour_keys: Array[String] = Shared.COLOUR_MAP.keys().duplicate()
 
 var world_tiles: Dictionary[Array, Dictionary]
 var patches: Dictionary[Rect2i, String]
+var empty_patches: Array = ["Ice", "Sea", "Mountain"]
 var astar: AStarGrid2D
 var poi_map: Dictionary[Array, Dictionary]
 
@@ -43,8 +44,8 @@ func recreate_world(grid_map):
 	patch_application()
 	#tile_check()
 	ruffle_edges()
-	#locations()
-	tile_deviation()
+	locations()
+	#tile_deviation()
 	World.tiles = world_tiles
 	Save.save_world()
 
@@ -80,10 +81,6 @@ func determine_patches():
 
 	for y in range(segments):
 		for x in range(segments):
-			print(len(available_patches))
-			var patches_left = available_patches.duplicate()
-			patches_left.reverse()
-			print(patches_left)
 			var current_chunk_h = chunk_size
 			var y_offset = 0
 			var essence = "Ice"
@@ -108,7 +105,8 @@ func generate_basic_grid():
 			var tile_data = {
 				"coords": current_pos,
 				"discovered": true,
-				"essence": "Sea"
+				"essence": "Sea",
+				"tile_type": "Basic"
 			}
 			world_tiles[current_pos] = tile_data
 
@@ -133,7 +131,7 @@ func ruffle_edges():
 			var pos = tile_data.pos
 			var actual_tile = world_tiles[pos] 
 
-			var neighbours = tile_neighbours(pos[0], pos[1], 2)
+			var neighbours = tile_neighbours(pos[0], pos[1], chunk_size/4)
 
 			var idx = edge_to_offset_idx[tile_data.side]
 			var neighbor_tile = neighbours[OFFSETS[idx]]
@@ -142,7 +140,29 @@ func ruffle_edges():
 				actual_tile["essence"] = neighbor_tile["essence"]
 
 func locations():
-	pass
+	for patch in patches:
+		if patches[patch] in empty_patches:
+			continue
+		
+		var capital = random_point_in_patch(patch, half_chunk) 
+		var city = random_point_in_patch(patch)
+		var town = random_point_in_patch(patch)
+		
+		var target_tile = world_tiles[capital]
+		target_tile["tile_type"] = "Capital"
+		poi_map[capital] = target_tile
+		world_tiles[capital] = target_tile
+
+func random_point_in_patch(patch: Rect2i, modifier: int = 0) -> Array[int]:
+	return [randi_range(
+		patch.position.x + modifier, 
+		patch.end.x - 1 - modifier
+		), 
+		randi_range(
+			patch.position.y + modifier, 
+			patch.end.y-1 - modifier
+		)
+	]
 
 func get_edge_data(rect: Rect2i) -> Array:
 	var list = []
@@ -180,13 +200,12 @@ func tile_neighbours(x:int, y:int, depth: int = 1):
 	return neighbours
 
 func tile_deviation():
-	for tile in world_tiles:
-		if randf() < 0.2:
+	var deviation = chunk_size/100
+	for tile in world_tiles.values():
+		if randf() < deviation:
 			var new_essence = colour_keys.pick_random()
-			var current_tile = world_tiles[tile]
-			if current_tile["essence"] != new_essence and current_tile["essence"] not in ["Sea", "Mountain", "Ice"]:
-				current_tile["type"] = current_tile["essence"]
-				current_tile["essence"] = new_essence
-				current_tile["tile_id"] = current_tile["type"]+new_essence
-				world_tiles[tile] = current_tile
-				poi_map[current_tile["coords"]] = current_tile
+			if tile["essence"] != new_essence and tile["essence"] not in empty_patches:
+				tile["type"] = tile["essence"]
+				tile["essence"] = new_essence
+				tile["tile_id"] = tile["type"]+new_essence
+				poi_map[tile["coords"]] = tile

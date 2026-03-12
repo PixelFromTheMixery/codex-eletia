@@ -17,3 +17,15 @@ const COLOUR_MAP: Dictionary[String, Color] = {
 	"Time": Color("#8B4513"), # Saddle Brown
 	"Ice": Color("#DFD3E3"), # Purple White
 }
+
+const ICON_MAP: Dictionary[String, Texture2D] = {
+	"Capital": preload("res://assets/icons/map/capital.png"),
+	"City": preload("res://assets/icons/map/city.png"),
+	"Town": preload("res://assets/icons/map/town.png"),
+	"Hamlet": preload("res://assets/icons/map/hamlet.png"),
+	"Colony": preload("res://assets/icons/map/colony.png"),
+	"Refuge": preload("res://assets/icons/map/refuge.png"),
+	"Sanctuary": preload("res://assets/icons/map/sanctuary.png"),
+	"Fort": preload("res://assets/icons/map/fort.png"),
+	"Stronghold": preload("res://assets/icons/map/stronghold.png")
+}
