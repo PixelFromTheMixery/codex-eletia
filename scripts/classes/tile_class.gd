@@ -10,6 +10,7 @@ var tile_id: String
 var essence: String
 var base_colour: Color
 var tile_type: String
+var poi: bool
 
 #Dynamic
 var discovered = false
@@ -20,3 +21,4 @@ func _init(world_ref: Array) -> void:
 	self.essence = world_entry["essence"]
 	self.base_colour = Shared.COLOUR_MAP[self.essence]
 	self.tile_type = world_entry["tile_type"]
+	self.poi = world_entry["poi"]

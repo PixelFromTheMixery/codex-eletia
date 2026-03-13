@@ -28,31 +28,35 @@ var chunk_size: int
 var half_chunk: int
 var segments: int
 var full_size: int
-var colour_keys: Array[String] = Shared.COLOUR_MAP.keys().duplicate()
 
-var world_tiles: Dictionary[Array, Dictionary]
 var patches: Dictionary[Rect2i, String]
 var empty_patches: Array = ["Ice", "Sea", "Mountain"]
-var astar: AStarGrid2D
-var poi_map: Dictionary[Array, Dictionary]
+var workable_patches: Array[String]
+
+var world_tiles: Dictionary[Array, Dictionary]
 
 
 func recreate_world(grid_map):
 	reset_world(grid_map)
+	workable_patches = Shared.COLOUR_MAP.keys().filter(
+		func(key): return not empty_patches.has(key)
+	)
 	determine_patches()
 	generate_basic_grid()
 	patch_application()
-	#tile_check()
 	ruffle_edges()
 	locations()
 	#tile_deviation()
+	tile_check()
 	World.tiles = world_tiles
 	Save.save_world()
 
 func tile_check():
 	for tile in world_tiles:
-		if "essence" not in world_tiles[tile].keys():
-			pass
+		var target_tile = world_tiles[tile]
+		if target_tile["poi"]:
+			if target_tile["tile_type"] == "Basic":
+				pass
 
 func reset_world(grid_map: GridContainer):
 	chunk_size = World.chunk_size
@@ -66,8 +70,8 @@ func reset_world(grid_map: GridContainer):
 	grid_map.columns = full_size
 
 func determine_patches():
-	var available_patches: Array[String] = colour_keys.duplicate()
-	var missing_cultures: Array[String] = ["Time", "Space", "Mystic", "Ice"]
+	var available_patches: Array[String] = workable_patches.duplicate()
+	var missing_cultures: Array[String] = ["Time", "Space", "Mystic"]
 	available_patches = available_patches.filter(func(patch): 
 		return not patch in missing_cultures
 	)
@@ -97,26 +101,35 @@ func determine_patches():
 			var rect = Rect2i(x * chunk_size, y_offset, chunk_size, current_chunk_h)
 			patches[rect] = essence
 
+func unpack_patch(patch: Rect2i):
+	var patch_tiles: Array
+	for y in range(patch.position.y, patch.end.y):
+		for x in range(patch.position.x, patch.end.x):
+			patch_tiles.append([x,y])
+
+	return patch_tiles
+
 
 func generate_basic_grid():
+	var basic_tile = {
+		"discovered": true,
+		"essence": "Sea",
+		"tile_type": "Basic",
+		"poi" : false
+	}
 	for y in range(full_size):
 		for x in range(full_size):
 			var current_pos = [x,y]
-			var tile_data = {
-				"coords": current_pos,
-				"discovered": true,
-				"essence": "Sea",
-				"tile_type": "Basic"
-			}
+			var tile_data = basic_tile.duplicate()
+			tile_data["coords"] = current_pos
 			world_tiles[current_pos] = tile_data
 
 
 func patch_application():
 	for patch in patches:
-		for y in range(patch.position.y, patch.end.y):
-			for x in range(patch.position.x, patch.end.x):
-				var current_pos = [x,y]
-				world_tiles[current_pos]["essence"] = patches[patch]
+		var patch_tiles = unpack_patch(patch)
+		for patch_tile in patch_tiles:
+			world_tiles[patch_tile]["essence"] = patches[patch]
 
 
 func ruffle_edges():
@@ -141,17 +154,63 @@ func ruffle_edges():
 
 func locations():
 	for patch in patches:
-		if patches[patch] in empty_patches:
+		var patch_essence = patches[patch]
+		if patch_essence in empty_patches:
 			continue
+
+		minor_locations(patch)
+
+		for major in ["Capital", "City", "Town"]:
+			var target_coords
+			if major == "Capital":
+				target_coords = random_point_in_patch(patch, half_chunk) 
+			if major == "City":
+				target_coords = random_point_in_patch(patch, chunk_size - half_chunk / 2)
+			if major == "Town":
+				target_coords = random_point_in_patch(patch, chunk_size-1 - 2) 
 		
-		var capital = random_point_in_patch(patch, half_chunk) 
-		var city = random_point_in_patch(patch)
-		var town = random_point_in_patch(patch)
-		
-		var target_tile = world_tiles[capital]
-		target_tile["tile_type"] = "Capital"
-		poi_map[capital] = target_tile
-		world_tiles[capital] = target_tile
+			var target_tile = world_tiles[target_coords]
+			
+			target_tile["tile_type"] = major
+			target_tile["essence"] = patch_essence
+			target_tile["poi"] = true
+
+			world_tiles[target_coords] = target_tile
+
+#TODO: Weird generation going on
+func minor_locations(patch: Rect2i):
+	var patch_tiles = unpack_patch(patch)
+	for patch_tile in patch_tiles:
+		var target_tile = world_tiles[patch_tile]
+		if target_tile["essence"] == "Sea" and randf() <= 0.25:
+			target_tile["tile_type"] = "Port"
+
+		elif target_tile["essence"] == "Mountain" and randf() <= 0.5:
+			target_tile["tile_type"] = "Cave"
+
+		elif randf() <= 0.15:
+			target_tile = deviate_tile(target_tile, patches[patch])
+
+		if target_tile["tile_type"] != "Basic":
+			target_tile["poi"] = true
+			world_tiles[patch_tile] = target_tile
+			
+func deviate_tile(target_tile, base_essence):
+	var deviation_type = ["essence", "minor"].pick_random()
+	match deviation_type:
+		"essence":
+			var acceptable_essences = workable_patches.duplicate()
+			acceptable_essences.erase(base_essence)
+			var new_essence = acceptable_essences.pick_random()
+			target_tile["tile_type"] = target_tile["essence"]
+			target_tile["essence"] = new_essence
+		"minor":
+			var new_type = TYPE_LIST.pick_random()
+			target_tile["tile_type"] = new_type
+
+	return target_tile
+
+
 
 func random_point_in_patch(patch: Rect2i, modifier: int = 0) -> Array[int]:
 	return [randi_range(
@@ -198,14 +257,3 @@ func tile_neighbours(x:int, y:int, depth: int = 1):
 
 			neighbours[[ox, oy]] = world_tiles.get([new_x, new_y])
 	return neighbours
-
-func tile_deviation():
-	var deviation = chunk_size/100
-	for tile in world_tiles.values():
-		if randf() < deviation:
-			var new_essence = colour_keys.pick_random()
-			if tile["essence"] != new_essence and tile["essence"] not in empty_patches:
-				tile["type"] = tile["essence"]
-				tile["essence"] = new_essence
-				tile["tile_id"] = tile["type"]+new_essence
-				poi_map[tile["coords"]] = tile
