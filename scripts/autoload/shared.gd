@@ -29,15 +29,16 @@ const ICON_MAP: Dictionary[String, Texture2D] = {
 	"Outpost": preload("res://assets/icons/map/outpost.png"),
 	"Fort": preload("res://assets/icons/map/fort.png"),
 	"Stronghold": preload("res://assets/icons/map/stronghold.png"),
+	# Transport
 	"Road": preload("res://assets/icons/map/road.png"),
 	"Path": preload("res://assets/icons/map/path.png"),
 	"Trail": preload("res://assets/icons/map/trail.png"),
-	# Transport
 	"Cave": preload("res://assets/icons/map/cave.png"),
 	"Port": preload("res://assets/icons/map/port.png"),
+	# Natural Element
+	"Sea": preload("res://assets/icons/map/sea.png"),
+	"Mountain": preload("res://assets/icons/map/mountain.png"),
 	#Essences
-	"Sea": preload("res://assets/icons/map/mix.png"),
-	"Mountain": preload("res://assets/icons/map/mix.png"),
 	"Fire": preload("res://assets/icons/map/mix.png"),
 	"Water": preload("res://assets/icons/map/mix.png"),
 	"Air": preload("res://assets/icons/map/mix.png"),

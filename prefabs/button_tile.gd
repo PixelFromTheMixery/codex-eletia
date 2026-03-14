@@ -20,3 +20,7 @@ func update_icon(new_size):
 		expand_icon = true
 	else:
 		icon = null
+
+
+func _on_pressed() -> void:
+	tile_info.emit(data.coords)

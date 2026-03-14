@@ -41,6 +41,7 @@ custom_minimum_size = Vector2(31, 31)
 layout_mode = 2
 size_flags_vertical = 0
 text = "-"
+icon_alignment = 1
 
 [node name="Button_Big" type="Button" parent="VBox_Window/HBoxSettings" index="2" unique_id=1392197459]
 custom_minimum_size = Vector2(31, 31)
@@ -52,15 +53,33 @@ text = "+"
 visible = false
 size_flags_vertical = 1
 
-[node name="Fold_TileInfo" type="FoldableContainer" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="2" unique_id=242288924]
+[node name="HBox_Tile" type="HBoxContainer" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="2" unique_id=1392003359]
 layout_mode = 2
+
+[node name="Fold_TileInfo" type="FoldableContainer" parent="VBox_Window/HBox_Tile" index="0" unique_id=242288924]
+layout_mode = 2
+size_flags_horizontal = 3
 folded = true
 title = "Tile Info"
 title_alignment = 1
 
-[node name="VBox_TileInfo" type="VBoxContainer" parent="VBox_Window/Fold_TileInfo" index="0" unique_id=946221007]
+[node name="VBox_TileInfo" type="VBoxContainer" parent="VBox_Window/HBox_Tile/Fold_TileInfo" index="0" unique_id=946221007]
 visible = false
 layout_mode = 2
+
+[node name="Label_Coords" type="Label" parent="VBox_Window/HBox_Tile/Fold_TileInfo/VBox_TileInfo" index="0" unique_id=1657796186]
+layout_mode = 2
+
+[node name="Label_Essence" type="Label" parent="VBox_Window/HBox_Tile/Fold_TileInfo/VBox_TileInfo" index="1" unique_id=1038067582]
+layout_mode = 2
+
+[node name="Label_Type" type="Label" parent="VBox_Window/HBox_Tile/Fold_TileInfo/VBox_TileInfo" index="2" unique_id=943012851]
+layout_mode = 2
+
+[node name="Button_Travel" type="Button" parent="VBox_Window/HBox_Tile" index="1" unique_id=1394535700]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+text = "Travel"
 
 [node name="Scroll_Map" type="ScrollContainer" parent="VBox_Window" parent_id_path=PackedInt32Array(1113384820) index="3" unique_id=355193031]
 layout_mode = 2
