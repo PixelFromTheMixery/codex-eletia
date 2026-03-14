@@ -23,15 +23,15 @@ func _init(item_id_string: String):
 	"""Creates instance of ItemData based on ID reference in library and Player"""
 	self.item_id = item_id_string
 
-	var lib_entry = Data.items.get(item_id, {})
+	var lib_entry = Data.items.get(item_id)
 	if lib_entry.is_empty():
 		push_error("Item ID %s not found in Library!" % item_id)
 		return
-	self.item_name = lib_entry.get("item_name", "Unknown Item")
-	self.unit_weight = lib_entry.get("unit_weight", 0.0)
-	self.tags.assign(lib_entry.get("tags", []))
+	self.item_name = lib_entry["item_name"]
+	self.unit_weight = lib_entry["unit_weight"]
+	self.tags.assign(lib_entry["tags"])
 
-	var player_entry = Player.inventory.get(item_id, {"qty": 0})
+	var player_entry = Player.inventory.get(item_id)
 	self.qty = player_entry["qty"]
 
 func calculate_weights() -> void:

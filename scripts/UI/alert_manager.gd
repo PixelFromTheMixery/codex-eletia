@@ -12,6 +12,6 @@ func create_alert(message: String):
 	if count > 2:
 		self.get_child(-1).free()
 	var new_alert = alert.instantiate()
-	new_alert.timeout = Settings.general.get("Alert Timeout", 3.0)
+	new_alert.timeout = Settings.general["Alert Timeout"]
 	new_alert.message = message
 	self.add_child(new_alert)

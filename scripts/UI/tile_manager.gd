@@ -1,4 +1,4 @@
-extends MapGenerator
+extends Node
 
 @onready var grid_map: GridContainer = $VBox_Window/Scroll_Map/Center/Grid_Map
 @onready var spinbox_cellsize: SpinBox = $VBox_Window/HBoxSettings/Fold_Settings/Grid_Settings/SpinBox_CellSize
@@ -9,6 +9,8 @@ extends MapGenerator
 @onready var label_essence: Label = $VBox_Window/HBox_Tile/Fold_TileInfo/VBox_TileInfo/Label_Essence
 @onready var label_type: Label = $VBox_Window/HBox_Tile/Fold_TileInfo/VBox_TileInfo/Label_Type
 
+var map_generator: MapGenerator = MapGenerator.new()
+var astar_nav: AstarNav = AstarNav.new()
 
 var button_tile: PackedScene = preload("res://prefabs/button_tile.tscn")
 var cell_size: int
@@ -20,7 +22,7 @@ func _ready() -> void:
 	grid_map.columns = World.chunk_size * World.chunk_segments
 	cell_size = Settings.map["Cell Size"]
 	#if len(World.tiles) == 0:
-	recreate_world(grid_map)
+	map_generator.recreate_world(grid_map, astar_nav)
 	for tile in World.tiles:
 		create_tile(tile)
 	update_cell_size(cell_size)

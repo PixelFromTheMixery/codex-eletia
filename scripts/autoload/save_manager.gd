@@ -27,7 +27,7 @@ func unmap_object(obj:Object):
 	for prop in props:
 		if prop.usage & PROPERTY_USAGE_SCRIPT_VARIABLE:
 			var prop_name = prop.name
-			var val = obj.get(prop_name)
+			var val = obj[prop_name]
 			if val is Vector2 or val is Array or val is Color:
 				obj_dict[prop_name] = var_to_str(val)
 			else:

@@ -28,7 +28,7 @@ func load_inventory():
 # Fetch
 func get_inv_item(item_id: String):
 	"""Fetches item object from pool, should be mapped to object"""
-	return item_pool.get(item_id)
+	return item_pool[item_id]
 
 # Update UI
 func update_weight_display():

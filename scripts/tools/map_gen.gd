@@ -1,4 +1,4 @@
-extends Node
+extends RefCounted
 
 class_name MapGenerator
 
@@ -40,7 +40,10 @@ var empty_patches: Array = ["Ice", "Sea", "Mountain"]
 var essence_list: Array = Shared.COLOUR_MAP.keys().duplicate()
 
 var world_tiles: Dictionary[Array, Dictionary]
-
+var poi_map: Dictionary = {
+	"major": [],
+	"minor": []
+}
 
 # Utility functions
 func unpack_patch(patch: Rect2i):
@@ -83,24 +86,29 @@ func get_edge_data(rect: Rect2i) -> Array:
 	return list
 
 # World Creation
-func recreate_world(grid_map):
-	reset_world(grid_map)
+func recreate_world(grid_map: GridContainer, astar: AstarNav):
+	reset_world(grid_map, astar)
 
 	determine_patches()
 	generate_basic_grid()
+
+	astar.generate_mapping(world_tiles)
 
 	generate_continents()
 
 	diversify_patches()
 
+	pathing(astar)
+
 	poi_collection()
+
 
 	tile_check()
 	World.tiles = world_tiles
 	Save.save_world()
 
 
-func reset_world(grid_map: GridContainer):
+func reset_world(grid_map: GridContainer, astar: AstarNav):
 	chunk_size = World.chunk_size
 	half_chunk = chunk_size / 2
 	segments = World.chunk_segments
@@ -110,6 +118,7 @@ func reset_world(grid_map: GridContainer):
 		tile.queue_free()
 	World.tiles = {}
 	grid_map.columns = full_size
+	astar.reset_astar()
 
 # Whole map
 func determine_patches():
@@ -153,12 +162,15 @@ func generate_basic_grid():
 		"tile_type": "Basic",
 		"poi" : false
 	}
+	var instance: int = 0
 	for y in range(full_size):
 		for x in range(full_size):
 			var current_pos = [x,y]
 			var tile_data = basic_tile.duplicate()
 			tile_data["coords"] = current_pos
+			tile_data["instance"] = instance
 			world_tiles[current_pos] = tile_data
+			instance += 1
 
 
 func generate_continents():
@@ -196,7 +208,7 @@ func ruffle_edges(patch):
 				actual_tile["essence"] = neighbours[offset]["essence"]
 
 
-func tile_neighbours(x:int, y:int, depth: int = 1):
+func tile_neighbours(x: int, y: int, depth: int = 1):
 	var neighbours = {}
 	for ox in range(-depth, depth + 1):
 		for oy in range(-depth, depth + 1):
@@ -207,7 +219,7 @@ func tile_neighbours(x:int, y:int, depth: int = 1):
 			var new_x = (x + ox + full_size) % full_size
 			var new_y = (y + oy + full_size) % full_size
 
-			neighbours[[ox, oy]] = world_tiles.get([new_x, new_y])
+			neighbours[[ox, oy]] = world_tiles[[new_x, new_y]]
 	return neighbours
 
 
@@ -216,7 +228,6 @@ func diversify_patches():
 	var acceptable_essences = essence_list.duplicate()
 	acceptable_essences.erase("Ice")
 	var acceptable_patches = {}
-	var anti_patches = {}
 
 	for patch in patches:
 		if patches[patch] not in empty_patches:
@@ -233,7 +244,7 @@ func diversify_patches():
 		for patch_tile in patch_tiles:
 			radical_locations(patch_tile, radical_chance, patch_essence, acceptable_essences)
 		unique_locations(patch, patch_essence)
-	
+
 
 func transit_tiles(patch: Rect2i):
 	var edges = {
@@ -258,7 +269,7 @@ func transit_tiles(patch: Rect2i):
 	
 	for side in edges.keys():
 		for tile in edges[side]:
-			var target_tile = world_tiles.get(tile)
+			var target_tile = world_tiles[tile]
 			if target_tile == null: continue
 			if side not in edge_types:
 				if target_tile["essence"] in ["Sea", "Mountain"]:
@@ -280,7 +291,7 @@ func transit_tiles(patch: Rect2i):
 
 			var tile_data = edge_tiles[side][tile]
 
-			if tile_data.get("essence") == side_essence:
+			if tile_data["essence"] == side_essence:
 				if randf() < spawn_chance:
 					tile_data["tile_type"] = type_name
 					transit_count += 1
@@ -291,16 +302,17 @@ func radical_locations(patch_tile, radical_chance, base_essence, acceptable_esse
 	var target_tile = world_tiles[patch_tile]
 	if randf() <= radical_chance and target_tile["essence"] not in empty_patches:
 		var deviation_type = ["essence", "minor"].pick_random()
+		var new_type
 		match deviation_type:
 			"essence":
 				acceptable_essences.erase(base_essence)
-				var new_essence = acceptable_essences.pick_random()
-				target_tile["tile_type"] = new_essence
+				new_type = acceptable_essences.pick_random()
 			"minor":
-				var new_type = TYPE_LIST.pick_random()
-				target_tile["tile_type"] = new_type
+				new_type = TYPE_LIST.pick_random()
+		target_tile["tile_type"] = new_type
 
 		world_tiles[patch_tile] = target_tile
+		poi_map["minor"].append(target_tile)
 
 
 func unique_locations(patch, base_essence):
@@ -317,6 +329,7 @@ func unique_locations(patch, base_essence):
 		
 		target_tile["tile_type"] = major
 		target_tile["essence"] = base_essence
+		poi_map["major"].append(target_tile)
 
 
 func random_point_in_patch(patch: Rect2i, modifier: int = 0) -> Array[int]:
@@ -331,15 +344,17 @@ func random_point_in_patch(patch: Rect2i, modifier: int = 0) -> Array[int]:
 	]
 
 
-
-
+func pathing(astar):
+	for major in poi_map["major"]:
+		pass
 
 
 # Data cleanup
 func poi_collection():
 	for tile in world_tiles:
-		if world_tiles[tile]["tile_type"] != "Basic":
-				world_tiles[tile]["poi"] = true
+		var target_tile = world_tiles[tile]
+		if target_tile["tile_type"] != "Basic":
+				target_tile["poi"] = true
 
 
 func tile_check():

@@ -67,7 +67,7 @@ func generate_lists(req: bool, data_source: Array):
 		match entry["type"]:
 			"item":
 				pretty_name = Data.items[entry["id"]]["item_name"]
-		add_list_obj(req, entry["id"], formatters[entry["type"]].call(pretty_name, entry.get("qty")))
+		add_list_obj(req, entry["id"], formatters[entry["type"]].call(pretty_name, entry["qty"]))
 
 func check_action_button():
 	var forbidden = true
